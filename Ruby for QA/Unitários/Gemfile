@@ -1,0 +1,22 @@
+# frozen_string_literal: true
+
+source "https://rubygems.org"
+
+gem 'capybara'
+
+gem 'cucumber'
+gem 'faker'
+
+gem 'pry'
+gem 'pry-byebug'
+gem 'rspec'
+
+gem 'selenium-webdriver'
+gem 'rubocop'
+gem 'mime-types'
+gem 'webdrivers'
+
+gem 'guard'
+gem 'guard-rspec'
+
+gem 'rails'
