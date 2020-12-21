@@ -2,6 +2,6 @@
 development:
   clients:
     default:
-      uri: mongodb+srv://user:pass@yourcluster.mongodb.net/blog_development?retryWrites=true&w=majority
+      uri: mongodb+srv://nbooks:Arima777@cluster0.lz92l.mongodb.net/nbooks?retryWrites=true&w=majority
       options:
         server_selection_timeout: 5
