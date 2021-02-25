@@ -8,4 +8,4 @@ Scenario: Search button and click
     Given i'm in home page
     And see botton buy
     And give data
-    When click in this botton
+    When click in this bottonn
