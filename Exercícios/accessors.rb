@@ -2,7 +2,6 @@
 
 class Mage
 	attr_accessor :name, :spell, :age, :power, :special, :life
-	attr_reader :list
 	
 	def maho(target)
 		puts "#{@name} casts #{@spell} on #{target.name} !"
@@ -54,7 +53,6 @@ class Mage
 		rival2.power_init
 	end
 	
-	
 	def lose(rival)
 		up = rand(10..50)
 		rival.power += up
@@ -64,24 +62,28 @@ class Mage
 	def batle(rival, rival2)
 				
 		if rival.power < rival2.power
+		
 			rival.life -= rival2.power
 			puts "#{rival.name} recebeu o dano de -#{rival2.power} agora tem #{rival.life} pts de vida"
 			self.result_life(rival, rival2)
 			self.lose(rival)
+			
 		elsif rival.power > rival2.power
+		
 			rival2.life -= rival.power
 			self.result_life(rival, rival2)
 			puts "#{rival2.name} recebeu o dano de -#{rival.power} agora tem #{rival2.life} pontos de vida"
 			up = rand(10..50)
 			rival2.power += up
 			puts "#{rival2.name} recebeu upgrade power de +#{up} pts agora tem #{rival2.power} pts de poder"
+			
 		elsif rival.power == rival2.power
+		
 			puts "Empate cada um despertou um poder oculto!"
 			rival.power += rand(10..30)
 			rival2.power += rand(10..30)
-		end	
+		
 	end
-	
+		
 end
-
 
