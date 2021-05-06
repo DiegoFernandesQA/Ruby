@@ -41,7 +41,9 @@ class Mage
     @power = 250
   end
 
-  def comming_batle(rival, rival2)
+  asta = Mage.new
+  yuno = Mage.new
+  def comming_batle(asta, yuno)
     rival.name = "Asta"
     rival2.name = "Yuno"
 		
@@ -88,5 +90,15 @@ class Mage
       rival.power += rand(10..30)
       rival2.power += rand(10..30)
     end
+  end
+end
+
+class Yuno < Mage
+
+  def list_maho(rival)
+    puts "
+    Age: #{rival.age} \n
+    Mage Type: #{rival.mage_type} \n
+    "
   end
 end
