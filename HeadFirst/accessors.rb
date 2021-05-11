@@ -41,23 +41,35 @@ class Mage
     @power = 250
   end
 
-  asta = Mage.new
-  yuno = Mage.new
-  def comming_batle(asta, yuno)
-    rival.name = "Asta"
-    rival2.name = "Yuno"
-		
-    rival.life_init
-    rival2.life_init
+  def comming_batle(asta,yuno)
+    asta.name = "Asta"
+    yuno.name = "Yuno"
 
-    rival.power_init
-    rival2.power_init
+    asta.age = 17
+		yuno.age = 17
 
-		rival.mage_type('Darkness')
-		rival2.mage_type('Storm')
+    asta.life_init
+    yuno.life_init
+
+    asta.power_init
+    yuno.power_init
+
+		asta.mage_type('Darkness')
+		yuno.mage_type('Storm')
 		
-		rival.show_mage
-		rival2.show_mage
+		asta.show_mage
+		yuno.show_mage
+  end
+
+
+  def list_atributes(rival)
+    puts "
+    Age: #{rival.age} \n
+    Mage Type: #{@mage_type} \n
+    Life: #{rival.life} \n
+    Power: #{rival.power} \n
+    #{rival.show_mage} \t
+    "
   end
 
 	def result_life(rival, rival2)
@@ -93,12 +105,18 @@ class Mage
   end
 end
 
+def raise_expection(teste, tesla=1)
+  if teste.eql ""
+    raise "O campo esta vazio"
+  elsif tesla.eql 1
+    raise "não foi passado um parametro"
+  else
+    puts "você passou o seguinte dado #{teste}"
+  end
+
+end
+
 class Yuno < Mage
 
-  def list_maho(rival)
-    puts "
-    Age: #{rival.age} \n
-    Mage Type: #{rival.mage_type} \n
-    "
-  end
+  #não pega os atributos da classe herdada.
 end
