@@ -103,20 +103,38 @@ class Mage
       rival2.power += rand(10..30)
     end
   end
-end
 
-def raise_expection(teste, tesla=1)
-  if teste.eql ""
-    raise "O campo esta vazio"
-  elsif tesla.eql 1
-    raise "não foi passado um parametro"
-  else
-    puts "você passou o seguinte dado #{teste}"
+  def raise_expection(teste, tesla=1)
+    if teste.eql ""
+      raise "O campo esta vazio"
+    elsif tesla.eql 1
+      raise "não foi passado um parametro"
+    else
+      puts "você passou o seguinte dado #{teste}"
+    end
+  
+  end
+  
+  def super_saiajin
+    "Eu sou um super saiajin"
+    "Meu nome é um principe"
   end
 
+  def super_example(name)
+    "Hello #{name}"
+  end
 end
 
 class Yuno < Mage
-
+  def super_saiajin
+    a = super #com o super eu consigo o retono de um metodo da superclasse com nome equivalente dentro da minha subclass
+    puts "#{a} vai imprimi \"meu nome é um principe\"!"
+  end
   #não pega os atributos da classe herdada.
+  def super_example(name)
+    cumprimentos = super(name)
+    puts"#{cumprimentos}, seja bem-vindo!"
+  end
 end
+
+puts Yuno.new.super_saiajin #chamada convencional
