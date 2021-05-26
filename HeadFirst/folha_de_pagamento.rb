@@ -18,12 +18,13 @@ class Enployee
   def print_infos
     puts "Nome: #{@name}"
     puts "Seu salário é #{@salary}"
-    puts "Salário de 14 dias trabalhado: $#{(@salary/30) * 14}"
+    puts result = format("Salário de 14 dias trabalhado: $%0.2f", (@salary/30.00) * 14)
   end
 
 end
 
-p = Enployee.new
-p.name = "Diego"
-p.salary = 2000
-p.print_infos
+diego = Enployee.new
+diego.name = "Diego"
+diego.salary = 2750
+diego.print_infos
+puts diego.salary.class
