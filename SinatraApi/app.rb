@@ -1,26 +1,16 @@
-require "sinatra"
-require "mongoid"
-# DB connect
+require 'sinatra'
 
-Mongoid.load! "mongoid.yml"
-
-class Book
-    include Mongoid::Document #import dos recursos do BD para esta classe 
-
-    field: :title, type: String
-    field: :author, type: String
-    field: :isbn, type: String
-
+get '/' do
+  content_type 'application/json'
+  return { message: 'Welcome to QA-Land!' }.to_json
 end
 
-get "/" do
-
-    content_type: "application/json"
-    { message:"Welcome to Book api!"}.to_json
-end 
-
-get "/books" do
-    content_type: "application/json"
-    return Book.all.to_json #busca por todo doc da classe
-
+get '/books' do
+  content_type 'application/json'
+  books = [
+    { title: 'Sherlock Holmes', author: 'Arthur Conan Doyle', cod: 333 },
+    { title: '20 mil leguas submarinas', author: 'Júlio Verne', cod: 777 },
+    { title: 'Os Três Mosqueteiros', author: 'Alexandre Dumas', cod: 654 }
+  ]
+  return books.to_json
 end
