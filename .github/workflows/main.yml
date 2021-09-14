@@ -1,36 +1,31 @@
-# This is a basic workflow to help you get started with Actions
+name: 2 - Formulas Scheduler (Secrets)
 
-name: CI
-
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
-  # Allows you to run this workflow manually from the Actions tab
+  schedule:
+  - cron: "0 12 * * *"
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
+      - name: Setup Python Version
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
 
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      - name: Ritchie Installation & Initialization
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+            curl -fsSL https://commons-repo.ritchiecli.io/install.sh | bash
+            echo '{"addCommons":false, "sendMetrics":false, "runType":"local"}' | rit init --stdin
+
+      - name: Ritchie Formula Get Github User (Python) Execution
+        env:
+            USERNAME_DEMO: ${{ secrets.USERNAME_DEMO }}
+            USERNAME_CREDENTIAL: ${{ secrets.USERNAME_CREDENTIAL }}
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+            rit add repo --provider="Github" --name="formulas-github" --repoUrl="https://github.com/GuillaumeFalourd/formulas-github" --priority=1
+            rit set credential --provider=github --fields=username,token --values="$USERNAME_CREDENTIAL","$GITHUB_TOKEN"
+            rit github get user --rit_github_username="$USERNAME_DEMO" --rit_repo_details="no" --rit_keep_file="no"
