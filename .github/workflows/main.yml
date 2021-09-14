@@ -27,4 +27,5 @@ jobs:
       with:
         repository: DiegoFernandesQA/helper-qa
         token: ${{ secrets.GITHUB_TOKEN }}
-        path: main
+        ref: main
+        run: sudo apt install
