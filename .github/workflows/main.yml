@@ -25,7 +25,5 @@ jobs:
     - name: Checkout private tools
       uses: actions/checkout@v2
       with:
-        repository: DiegoFernandesQA/helper-qa
-        token: ${{ secrets.GITHUB_TOKEN }}
-        ref: main
-        run: sudo apt install
+        repository: DiegoFernandesQA/Cypress
+#         token: ${{ secrets.GITHUB_TOKEN }}
